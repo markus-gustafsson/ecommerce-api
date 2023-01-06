@@ -12,9 +12,11 @@ public class CartService {
         this.cartRepository = cartRepository;
     }
 
+    /**
+     * @return The CartDTO representation of the newly created Cart
+     */
     public CartDTO create() {
         Cart savedCart = cartRepository.save(new Cart());
-        System.out.println("KEKLMAO! -->  -->  -->" + savedCart); // TODO: remove this line
         return CartConverter.toDTO(savedCart);
     }
 }

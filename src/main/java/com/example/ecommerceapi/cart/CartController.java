@@ -26,6 +26,4 @@ public class CartController {
         URI location = URI.create(String.format("%s/%s", BASE_PATH, cartDTO.id()));
         return ResponseEntity.created(location).body(cartDTO);
     }
-
-
 }
