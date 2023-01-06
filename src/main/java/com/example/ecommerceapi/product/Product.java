@@ -3,7 +3,6 @@ package com.example.ecommerceapi.product;
 import com.example.ecommerceapi.productsection.ProductSection;
 import jakarta.persistence.*;
 
-import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
