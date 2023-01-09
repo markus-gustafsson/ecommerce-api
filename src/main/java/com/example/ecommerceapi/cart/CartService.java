@@ -17,6 +17,6 @@ public class CartService {
      */
     public CartDTO create() {
         Cart savedCart = cartRepository.save(new Cart());
-        return CartConverter.toDTO(savedCart);
+        return CartConverter.toCartDTO(savedCart);
     }
 }

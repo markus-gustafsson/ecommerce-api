@@ -26,4 +26,6 @@ public class ProductController {
         List<ProductDTO> productDTOS = productService.getAll();
         return ResponseEntity.ok().body(productDTOS);
     }
+
+
 }
