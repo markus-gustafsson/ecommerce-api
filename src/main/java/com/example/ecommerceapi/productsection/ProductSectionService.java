@@ -1,5 +1,6 @@
 package com.example.ecommerceapi.productsection;
 
+import com.example.ecommerceapi.productsection.dto.NewProductSectionDTO;
 import com.example.ecommerceapi.productsection.dto.ProductSectionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +26,15 @@ public class ProductSectionService {
     public ProductSectionDTO getById(Long id) {
         ProductSection productSection = productSectionRepository.findById(id);
         return ProductSectionConverter.toProductSectionDTO(productSection);
+    }
+
+    public ProductSectionDTO create(NewProductSectionDTO newProductSectionDTO) {
+        ProductSection productSection = new ProductSection(newProductSectionDTO.name());
+        ProductSection saved = productSectionRepository.save(productSection);
+        return ProductSectionConverter.toProductSectionDTO(saved);
+    }
+
+    public void deleteById(Long id) {
+        productSectionRepository.deleteById(id);
     }
 }

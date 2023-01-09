@@ -19,6 +19,10 @@ public class ProductSection {
     public ProductSection() {
     }
 
+    public ProductSection(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

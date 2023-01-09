@@ -23,4 +23,12 @@ public class ProductSectionRepository {
     public ProductSection findById(Long id) throws NoSuchElementException {
         return jpaProductSectionRepository.findById(id).orElseThrow();
     }
+
+    public ProductSection save(ProductSection productSection) {
+        return jpaProductSectionRepository.save(productSection);
+    }
+
+    public void deleteById(Long id) {
+        jpaProductSectionRepository.deleteById(id);
+    }
 }

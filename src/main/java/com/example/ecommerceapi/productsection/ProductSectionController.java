@@ -1,15 +1,15 @@
 package com.example.ecommerceapi.productsection;
 
+import com.example.ecommerceapi.productsection.dto.NewProductSectionDTO;
 import com.example.ecommerceapi.productsection.dto.ProductSectionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.net.URI;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -41,5 +41,18 @@ public class ProductSectionController {
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(NOT_FOUND);
         }
+    }
+
+    @PostMapping(produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<ProductSectionDTO> createNew(@RequestBody NewProductSectionDTO newProductSectionDTO) {
+        ProductSectionDTO productSectionDTO = productSectionService.create(newProductSectionDTO);
+        URI location = URI.create(String.format("%s/%s", BASE_PATH, productSectionDTO.id()));
+        return ResponseEntity.created(location).body(productSectionDTO);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        productSectionService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
