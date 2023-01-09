@@ -1,5 +1,6 @@
 package com.example.ecommerceapi.product;
 
+import com.example.ecommerceapi.product.dto.NewProductDTO;
 import com.example.ecommerceapi.product.dto.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,16 @@ public class ProductService {
         return productList.stream()
                 .map(ProductConverter::toProductDTO)
                 .toList();
+    }
+
+    public ProductDTO create(NewProductDTO newProductDTO) {
+        Product newProduct = new Product(
+                newProductDTO.name(),
+                newProductDTO.price(),
+                newProductDTO.imageUrl(),
+                newProductDTO.amountOfProducts()
+        );
+        Product savedProduct = productRepository.save(newProduct);
+        return ProductConverter.toProductDTO(savedProduct);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.ecommerceapi.product.dto;
+package com.example.ecommerceapi.product.productincart.dto;
 
 public record ProductInCartDTO(
         Long id,

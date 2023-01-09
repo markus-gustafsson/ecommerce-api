@@ -1,7 +1,8 @@
 package com.example.ecommerceapi.product;
 
 import com.example.ecommerceapi.product.dto.ProductDTO;
-import com.example.ecommerceapi.product.dto.ProductInCartDTO;
+import com.example.ecommerceapi.product.productincart.dto.ProductInCartDTO;
+import com.example.ecommerceapi.product.productincart.ProductInCart;
 import org.springframework.stereotype.Component;
 
 @Component

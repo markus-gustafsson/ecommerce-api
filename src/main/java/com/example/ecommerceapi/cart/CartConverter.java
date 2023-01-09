@@ -2,7 +2,7 @@ package com.example.ecommerceapi.cart;
 
 import com.example.ecommerceapi.cart.dto.CartDTO;
 import com.example.ecommerceapi.product.ProductConverter;
-import com.example.ecommerceapi.product.dto.ProductInCartDTO;
+import com.example.ecommerceapi.product.productincart.dto.ProductInCartDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

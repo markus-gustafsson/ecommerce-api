@@ -22,6 +22,13 @@ public class Product {
     public Product() {
     }
 
+    public Product(String name, Double price, String imageUrl, Integer leftInStock) {
+        this.name = name;
+        this.price = price;
+        this.imageUrl = imageUrl;
+        this.leftInStock = leftInStock;
+    }
+
     public Long getId() {
         return id;
     }
@@ -56,6 +63,10 @@ public class Product {
 
     public void setLeftInStock(Integer leftInStock) {
         this.leftInStock = leftInStock;
+    }
+
+    public void updateStock(Integer change) {
+        this.leftInStock += change;
     }
 
     public Set<ProductSection> getProductSections() {

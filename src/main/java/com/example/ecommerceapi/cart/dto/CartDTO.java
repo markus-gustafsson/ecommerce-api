@@ -1,7 +1,6 @@
 package com.example.ecommerceapi.cart.dto;
 
-import com.example.ecommerceapi.product.ProductInCart;
-import com.example.ecommerceapi.product.dto.ProductInCartDTO;
+import com.example.ecommerceapi.product.productincart.dto.ProductInCartDTO;
 
 import java.util.List;
 
