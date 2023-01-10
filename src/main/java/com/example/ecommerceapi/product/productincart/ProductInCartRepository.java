@@ -1,5 +1,6 @@
 package com.example.ecommerceapi.product.productincart;
 
+import com.example.ecommerceapi.cart.Cart;
 import com.example.ecommerceapi.productsection.JPAProductSectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

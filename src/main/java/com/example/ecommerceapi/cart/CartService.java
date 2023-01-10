@@ -38,14 +38,13 @@ public class CartService {
 
     // FIXME: This needs to be refactored!!
     public CartDTO addProductToCart(Long cartId, AddProductToCartDTO addProductToCartDTO) {
-        Cart cart = cartRepository.findById(cartId);
-        Product product = productRepository.findById(addProductToCartDTO.productId());
+        Long productId = addProductToCartDTO.productId();
         Integer quantity = addProductToCartDTO.quantity();
 
-        ProductInCart productInCart;
-        if (productInCartRepository.findById(addProductToCartDTO.productId()) != null) {
-            productInCart = productInCartRepository.findById(addProductToCartDTO.productId());
-        } else {
+        Cart cart = cartRepository.findById(cartId);
+        Product product = productRepository.findById(productId);
+        ProductInCart productInCart = productInCartRepository.findById(productId);
+        if (productInCart == null) {
             ProductInCart newProductInCart = createNewProductInCart(addProductToCartDTO, cart, product);
             productInCart = productInCartRepository.save(newProductInCart);
         }
@@ -70,5 +69,22 @@ public class CartService {
                 cart,
                 addProductToCartDTO.quantity()
         );
+    }
+
+    public CartDTO deleteProductFromCart(Long cartId, Long productId) {
+        Cart cart = cartRepository.findById(cartId);
+        Product product = productRepository.findById(productId);
+        ProductInCart productInCart = productInCartRepository.findById(productId);
+        Integer quantity = productInCart.getQuantity();
+
+        cart.deleteProduct(productInCart);
+        cart.updateTotalNumberOfProducts();
+        cart.updateTotalPrice();
+        Cart updatedCart = cartRepository.save(cart);
+
+        product.updateStock(quantity);
+        productRepository.save(product);
+
+        return CartConverter.toCartDTO(updatedCart);
     }
 }

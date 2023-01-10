@@ -41,34 +41,15 @@ public class Cart {
     }
 
     public void updateTotalPrice() {
-        System.out.println("");
-        System.out.println("TOTAL PRICE BEFORE UPDATED -> " + this.totalPrice);
-        System.out.println("");
         this.totalPrice = this.products.stream()
                 .map(productInCart -> productInCart.getPrice() * productInCart.getQuantity())
                 .reduce(0.0, Double::sum);
-//        this.totalPrice = 0.0;
-//        for (ProductInCart p : this.products) {
-//            System.out.println("p.getPrice() --> " + p.getPrice());
-//            System.out.println("p.getQuantity() --> " + p.getQuantity());
-//            System.out.println("price * quantity == " + p.getPrice() * p.getQuantity());
-//            this.totalPrice += p.getPrice() * p.getQuantity();
-//        }
-        System.out.println("");
-        System.out.println("TOTAL PRICE _AFTER_ UPDATED -> " + this.totalPrice);
-        System.out.println("");
     }
 
     public void updateTotalNumberOfProducts() {
-        System.out.println("");
-        System.out.println("TOTAL NUMBER OF PRODUCTS IN CART BEFORE UPDATED -> " + this.totalNumberOfProducts);
-        System.out.println("");
         this.totalNumberOfProducts = this.products.stream()
                 .map(ProductInCart::getQuantity)
                 .reduce(0, Integer::sum);
-        System.out.println("");
-        System.out.println("TOTAL NUMBER OF PRODUCTS IN THE CART _AFTER_ UPDATED -> " + this.totalNumberOfProducts);
-        System.out.println("");
     }
 
     public List<ProductInCart> getProducts() {
@@ -97,5 +78,9 @@ public class Cart {
                 ", totalPrice=" + totalPrice +
                 ", products=" + products +
                 '}';
+    }
+
+    public boolean deleteProduct(ProductInCart productInCart) {
+        return this.products.remove(productInCart);
     }
 }

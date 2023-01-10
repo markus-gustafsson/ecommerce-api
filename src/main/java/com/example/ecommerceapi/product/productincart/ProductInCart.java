@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "product_in_cart")
 public class ProductInCart {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Double price;

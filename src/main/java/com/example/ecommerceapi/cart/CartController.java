@@ -43,7 +43,7 @@ public class CartController {
 
     // PUT, add product(in cart) to cart, decrease stock in Product
     @PutMapping(path = "/{cartId}/products", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<CartDTO> addProduct(
+    public ResponseEntity<CartDTO> addProductToCart(
             @PathVariable Long cartId,
             @RequestBody AddProductToCartDTO addProductToCartDTO
     ) {
@@ -57,5 +57,8 @@ public class CartController {
 
     // DELETE, remove product(in cart) from cart, increase stock in Product
     @DeleteMapping(path = "/{cartId}/products/{productId}", produces = APPLICATION_JSON_VALUE)
-
+    public ResponseEntity<CartDTO> deleteProductFromCart(@PathVariable Long cartId, @PathVariable Long productId) {
+        CartDTO cartDTO = cartService.deleteProductFromCart(cartId, productId);
+        return ResponseEntity.ok(cartDTO);
+    }
 }

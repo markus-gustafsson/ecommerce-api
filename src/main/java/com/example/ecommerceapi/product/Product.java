@@ -65,8 +65,8 @@ public class Product {
         this.leftInStock = leftInStock;
     }
 
-    public void updateStock(Integer change) {
-        this.leftInStock += change;
+    public void updateStock(Integer amount) {
+        this.leftInStock += amount;
     }
 
     public Set<ProductSection> getProductSections() {
